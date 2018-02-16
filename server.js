@@ -109,7 +109,7 @@ app.post('/recipes', jsonParser, (req, res) => {
 // required fields. also ensure that item id in url path, and
 // item id in updated item object match. if problems with any
 // of that, log error and send back status code 400. otherwise
-// call `ShoppingList.update` with updated item.
+// call `Recipes.update` with updated item.
 app.put('/recipes/:id', jsonParser, (req, res) => {
   const requiredFields = ['name', 'ingredients', 'id'];
   for (let i=0; i<requiredFields.length; i++) {
@@ -126,7 +126,7 @@ app.put('/recipes/:id', jsonParser, (req, res) => {
     console.error(message);
     return res.status(400).send(message);
   }
-  console.log(`Updating shopping list item \`${req.params.id}\``);
+  console.log(`Updating Recipe item \`${req.params.id}\``);
   Recipes.update({
     id: req.params.id,
     name: req.body.name,
